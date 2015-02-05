@@ -1,25 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tYE-Z7-cX1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Decagon-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Decagon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Decagon Load Screen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yx2-la-GVw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yx2-la-GVw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="YXA-XH-5zo"/>
+                            <constraint firstAttribute="centerY" secondItem="yx2-la-GVw" secondAttribute="centerY" id="apH-mu-23z"/>
+                            <constraint firstAttribute="centerX" secondItem="yx2-la-GVw" secondAttribute="centerX" id="nld-q1-XaP"/>
+                            <constraint firstItem="yx2-la-GVw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zRm-yg-Dwn"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="OCR" id="crN-XA-nt0">
+                            <color key="tintColor" red="0.50588235290000005" green="0.73725490199999999" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="Filter:" destination="BYZ-38-t0r" id="yEu-Bk-7PS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="a20-ab-79w"/>
+                        <barButtonItem systemItem="camera" id="cHF-Xw-25h">
+                            <color key="tintColor" red="0.50588235290000005" green="0.73725490199999999" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="Camera:" destination="BYZ-38-t0r" id="fla-gb-7fz"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Decagon" id="7hp-6i-Btc">
+                        <barButtonItem key="leftBarButtonItem" title="Send" id="zdN-ZV-2cm">
+                            <color key="tintColor" red="0.50588235290000005" green="0.73725490199999999" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="ServerUpload:" destination="BYZ-38-t0r" id="HHs-DL-9bd"/>
+                                <segue destination="Q9s-Mf-4I7" kind="show" identifier="goBackHome" id="P3e-AT-e1L"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ur1-t6-QsT">
+                            <color key="tintColor" red="0.50588235290000005" green="0.73725490199999999" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="sendMessage:" destination="BYZ-38-t0r" id="HxJ-lS-fLW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="yx2-la-GVw" id="GvJ-c3-Pk0"/>
+                        <segue destination="Q9s-Mf-4I7" kind="show" identifier="goBackHome" id="hv2-Al-uha"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1272" y="261"/>
+        </scene>
+        <!--Recieved Data View Controller-->
+        <scene sceneID="zda-t9-DXT">
+            <objects>
+                <viewController id="Q9s-Mf-4I7" customClass="RecievedDataViewController" customModule="Decagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9X7-7d-Wcl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tr2-D7-Jup"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YcM-nQ-c4a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZb-tT-Bsn">
+                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="bZb-tT-Bsn" secondAttribute="centerX" id="M0h-5u-lCi"/>
+                            <constraint firstAttribute="centerY" secondItem="bZb-tT-Bsn" secondAttribute="centerY" id="VVF-4B-MYu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="RecievedData" destination="bZb-tT-Bsn" id="OmA-yg-Kkf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XYw-Mk-yWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1987" y="261"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1yg-Ns-UgV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tYE-Z7-cX1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="gAQ-ZK-ke5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="8Q0-PW-f58">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4uO-ni-a7D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojF-Ny-tHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="478" y="261"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Decagon Load Screen.jpg" width="1536" height="2048"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="P3e-AT-e1L"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.50588235290000005" green="0.73725490199999999" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
 </document>
